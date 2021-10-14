@@ -13,4 +13,5 @@ java {
 }
 
 dependencies {
+    implementation project(Dependencies.Modules.domain)
 }

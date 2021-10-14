@@ -1,22 +1,30 @@
+import dependencies.Dependencies
+import dependencies.Version
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
+apply from: Dependencies.common
+
 android {
-    compileSdk 30
+    compileSdk Version.App.compileSdk
 
     defaultConfig {
         applicationId "academy.mukandrew.android.rickandmortycatalog"
-        minSdk 23
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        minSdk Version.App.minSdk
+        targetSdk Version.App.targetSdk
+        versionCode Version.App.versionCode
+        versionName Version.App.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
         }
+        buildConfigField "String", "BASE_URL", "\"${GRAPHQL_SERVER_ENDPOINT}\""
     }
 
     buildTypes {
@@ -37,8 +45,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
+        kotlinCompilerExtensionVersion Version.Compose.general
+        kotlinCompilerVersion Version.ClassPaths.kotlin
     }
     packagingOptions {
         resources {
@@ -48,18 +56,40 @@ android {
 }
 
 dependencies {
+    // modules
+    implementation project(Dependencies.Modules.presentation)
+    implementation project(Dependencies.Modules.domain)
+    implementation project(Dependencies.Modules.data)
+    implementation project(Dependencies.Modules.remote)
+    implementation project(Dependencies.Modules.cache)
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    // android
+    implementation Dependencies.Android.appcompat
+    implementation Dependencies.Android.material
+
+    // ktx
+    implementation Dependencies.Ktx.core
+    implementation Dependencies.Ktx.viewmodel
+    implementation Dependencies.Ktx.fragment
+    implementation Dependencies.Ktx.lifecycle
+
+    // compose
+    implementation Dependencies.Compose.ui
+    implementation Dependencies.Compose.material
+    implementation Dependencies.Compose.tooling
+    implementation Dependencies.Compose.activity
+
+    // hilt
+    implementation Dependencies.Hilt.android
+    implementation Dependencies.Hilt.lifecycle
+    kapt Dependencies.Hilt.androidCompiler
+    kapt Dependencies.Hilt.lifecycleCompiler
+
+    // android test
+    androidTestImplementation Dependencies.Test.androidJUnit
+    androidTestImplementation Dependencies.Test.androidEspresso
+    androidTestImplementation Dependencies.Test.androidCompose
+
+    // debug
+    debugImplementation Dependencies.Test.debugCompose
 }

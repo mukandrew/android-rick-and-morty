@@ -1,0 +1,8 @@
+import dependencies.Dependencies
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(Dependencies.Modules.common)
+
+    testImplementation Dependencies.Test.jUnit
+}

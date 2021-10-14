@@ -6,5 +6,10 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Rick and Morty Catalog"
-include ':app'
+include ':common'
+include ':remote'
 include ':data'
+include ':domain'
+include ':presentation'
+include ':app'
+include ':cache'

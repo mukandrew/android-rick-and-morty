@@ -1,0 +1,58 @@
+import dependencies.Dependencies
+import dependencies.Version
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: Dependencies.common
+
+android {
+    compileSdk Version.App.compileSdk
+
+    defaultConfig {
+        minSdk Version.App.minSdk
+        targetSdk Version.App.targetSdk
+        versionCode Version.App.versionCode
+        versionName Version.App.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(Dependencies.Modules.data)
+
+    // Room
+    implementation Dependencies.Room.runtime
+    implementation Dependencies.Ktx.room
+    kapt Dependencies.Room.compiler
+
+    testImplementation Dependencies.Test.room
+}

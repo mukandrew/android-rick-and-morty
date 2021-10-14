@@ -1,0 +1,26 @@
+import dependencies.Dependencies
+
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'com.apollographql.apollo'
+}
+
+apply from: Dependencies.common
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation project(Dependencies.Modules.data)
+
+    // Apollo
+    implementation Dependencies.Apollo.runtime
+    implementation Dependencies.Apollo.coroutinesSupport
+}
+
+apollo {
+    generateKotlinModels.set(true)
+}
