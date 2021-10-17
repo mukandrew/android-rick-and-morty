@@ -1,4 +1,3 @@
 package academy.mukandrew.randm.common
 
-class Common {
-}
+class Common

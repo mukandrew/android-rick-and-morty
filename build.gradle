@@ -17,3 +17,14 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+allprojects {
+    afterEvaluate { Project project ->
+        if (project.tasks.findByName("preBuild") != null) {
+            project.tasks.findByName("preBuild").dependsOn(ktlintVerification)
+        }
+        if (project.tasks.findByName("compileKotlin") != null) {
+            project.tasks.findByName("compileKotlin").dependsOn(ktlintVerification)
+        }
+    }
+}

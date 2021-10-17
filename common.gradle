@@ -1,5 +1,7 @@
 import dependencies.Dependencies
 
+apply from: Dependencies.ktlintGradle
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(Dependencies.Modules.common)
