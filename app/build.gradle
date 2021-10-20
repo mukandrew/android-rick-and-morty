@@ -56,6 +56,8 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     // modules
     implementation project(Dependencies.Modules.presentation)
     implementation project(Dependencies.Modules.domain)
