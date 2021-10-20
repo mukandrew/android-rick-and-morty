@@ -19,10 +19,16 @@ object Version {
     }
 
     // Libraries
+    object Kotlin {
+        const val coroutine = "1.5.2"
+    }
+
     object Test {
         const val jUnit = "4.13.2"
         const val androidJUnit = "1.1.3"
         const val androidEspresso = "3.4.0"
+        const val mockk = "1.12.0"
+        const val kotest = "4.6.3"
     }
 
     object Compose {

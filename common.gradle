@@ -5,5 +5,10 @@ apply from: Dependencies.ktlintGradle
 dependencies {
     implementation project(Dependencies.Modules.common)
 
+    implementation Dependencies.Kotlin.coroutine
+
     testImplementation Dependencies.Test.jUnit
+    testImplementation Dependencies.Test.mockk
+    testImplementation Dependencies.Test.coroutine
+    testImplementation Dependencies.Test.kotest
 }

@@ -29,6 +29,13 @@ object Dependencies {
     }
 
     // Libraries
+    object Kotlin {
+        const val coroutine =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Kotlin.coroutine}"
+        const val androidCoroutine =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.Kotlin.coroutine}"
+    }
+
     object Test {
         const val jUnit = "junit:junit:${Version.Test.jUnit}"
         const val androidJUnit = "androidx.test.ext:junit:${Version.Test.androidJUnit}"
@@ -37,6 +44,11 @@ object Dependencies {
         const val androidCompose = "androidx.compose.ui:ui-test-junit4:${Version.Compose.general}"
         const val debugCompose = "androidx.compose.ui:ui-tooling:${Version.Compose.general}"
         const val room = "androidx.room:room-testing:${Version.Room.general}"
+        const val mockk = "io.mockk:mockk:${Version.Test.mockk}"
+        const val coroutine =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.Kotlin.coroutine}"
+        const val kotest =
+            "io.kotest:kotest-assertions-core:${Version.Test.kotest}"
     }
 
     object Compose {
