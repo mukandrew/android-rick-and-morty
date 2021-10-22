@@ -6,7 +6,7 @@ import academy.mukandrew.randm.domain.characters.models.CharacterFilter
 import academy.mukandrew.randm.domain.pagination.models.PageResult
 
 interface CharacterRepository {
-    fun getCharacterList(page: Int, filter: CharacterFilter): Answer<PageResult<Character>>
-    fun getCharacterById(id: Int): Answer<Character>
-    fun getMultipleCharactersById(ids: List<Int>): Answer<List<Character>>
+    suspend fun getCharacterList(page: Int, filter: CharacterFilter): Answer<PageResult<Character>>
+    suspend fun getCharacterById(id: Int): Answer<Character>
+    suspend fun getMultipleCharactersById(ids: List<Int>): Answer<List<Character>>
 }
