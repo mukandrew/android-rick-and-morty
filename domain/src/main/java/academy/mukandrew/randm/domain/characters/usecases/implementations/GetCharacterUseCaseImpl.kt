@@ -9,6 +9,6 @@ class GetCharacterUseCaseImpl(
     private val repository: CharacterRepository
 ) : GetCharacterUseCase() {
     override suspend fun invoke(id: Int): Answer<Character> {
-        TODO("Not yet implemented")
+        return repository.getCharacterById(id)
     }
 }
