@@ -2,7 +2,7 @@ package academy.mukandrew.randm.common.utils
 
 inline fun <reified T : Enum<T>> safeValueOf(type: String?, default: T): T {
     return try {
-        java.lang.Enum.valueOf(T::class.java, type.orEmpty())
+        java.lang.Enum.valueOf(T::class.java, type?.uppercase().orEmpty())
     } catch (e: Exception) {
         default
     }
@@ -10,7 +10,7 @@ inline fun <reified T : Enum<T>> safeValueOf(type: String?, default: T): T {
 
 inline fun <reified T : Enum<T>> safeValueOfOrNull(type: String?): T? {
     return try {
-        java.lang.Enum.valueOf(T::class.java, type.orEmpty())
+        java.lang.Enum.valueOf(T::class.java, type?.uppercase().orEmpty())
     } catch (e: Exception) {
         null
     }

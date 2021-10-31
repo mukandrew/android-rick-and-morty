@@ -9,6 +9,6 @@ interface CharacterDataSource {
         filters: Map<String, String>
     ): PageResultResponseInterface<CharacterResponseInterface>
 
-    suspend fun getCharacterById(id: Int): CharacterResponseInterface
+    suspend fun getCharacterById(id: Int): CharacterResponseInterface?
     suspend fun getMultipleCharactersById(ids: List<Int>): List<CharacterResponseInterface>
 }
