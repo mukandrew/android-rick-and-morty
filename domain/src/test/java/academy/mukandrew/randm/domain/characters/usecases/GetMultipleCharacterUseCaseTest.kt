@@ -1,11 +1,11 @@
 package academy.mukandrew.randm.domain.characters.usecases
 
+import academy.mukandrew.randm.common.exceptions.NoContentException
 import academy.mukandrew.randm.common.result.Answer
 import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.characters.usecases.abstractions.GetMultipleCharacterUseCase
 import academy.mukandrew.randm.domain.characters.usecases.implementations.GetMultipleCharacterUseCaseImpl
-import academy.mukandrew.randm.domain.common.exceptions.NoContentException
 import io.kotest.matchers.collections.haveSize
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe

@@ -10,7 +10,7 @@ import academy.mukandrew.randm.data.pagination.models.PageResultResponseInterfac
 import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.models.CharacterFilter
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
-import academy.mukandrew.randm.domain.common.exceptions.NoContentException
+import academy.mukandrew.randm.common.exceptions.NoContentException
 import academy.mukandrew.randm.domain.pagination.models.PageResult
 
 class CharacterRepositoryImpl(
