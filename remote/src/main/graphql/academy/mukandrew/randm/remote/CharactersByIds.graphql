@@ -1,5 +1,5 @@
-query Character($id: ID!) {
-    character(id: $id) {
+query CharactersByIds($ids: [ID!]!) {
+    charactersByIds(ids: $ids) {
         id
         name
         status
