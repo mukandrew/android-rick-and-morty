@@ -47,15 +47,19 @@ object Dependencies {
         const val mockk = "io.mockk:mockk:${Version.Test.mockk}"
         const val coroutine =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.Kotlin.coroutine}"
-        const val kotest =
-            "io.kotest:kotest-assertions-core:${Version.Test.kotest}"
+        const val kotest = "io.kotest:kotest-assertions-core:${Version.Test.kotest}"
+        const val kotestProperty = "io.kotest:kotest-property:${Version.Test.kotest}"
     }
 
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Version.Compose.general}"
+        const val animation = "androidx.compose.animation:animation:${Version.Compose.general}"
         const val material = "androidx.compose.material:material:${Version.Compose.general}"
         const val tooling = "androidx.compose.ui:ui-tooling-preview:${Version.Compose.general}"
+        const val foundation = "androidx.compose.foundation:foundation:${Version.Compose.general}"
         const val activity = "androidx.activity:activity-compose:${Version.Compose.activity}"
+        const val viewModel =
+            "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.Compose.viewModel}"
     }
 
     object Android {

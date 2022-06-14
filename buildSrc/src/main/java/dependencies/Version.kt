@@ -14,7 +14,7 @@ object Version {
     object ClassPaths {
         const val hilt = "2.39.1"
         const val gradle = "7.0.2"
-        const val kotlin = "1.5.21"
+        const val kotlin = "1.6.10"
         const val apollo = "2.5.9"
     }
 
@@ -32,8 +32,9 @@ object Version {
     }
 
     object Compose {
-        const val general = "1.0.1"
+        const val general = "1.1.1"
         const val activity = "1.3.1"
+        const val viewModel = "2.4.1"
     }
 
     object Android {
@@ -49,7 +50,7 @@ object Version {
     }
 
     object Room {
-        const val general = "2.3.0"
+        const val general = "2.4.2"
     }
 
     object Hilt {

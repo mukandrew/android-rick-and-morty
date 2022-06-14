@@ -1,5 +1,7 @@
 package academy.mukandrew.randm.data.characters.mappers
 
+import academy.mukandrew.randm.data.characters.models.CharacterFilterRequest
+import academy.mukandrew.randm.data.characters.models.CharacterFilterRequestInterface
 import academy.mukandrew.randm.domain.characters.models.CharacterFilter
 import academy.mukandrew.randm.domain.characters.models.CharacterGender
 import academy.mukandrew.randm.domain.characters.models.CharacterStatus
@@ -18,4 +20,14 @@ fun CharacterFilter.toMap(): Map<String, String> {
         if (type.isNotBlank()) set(CHARACTER_FILTER_TYPE, type)
         if (gender != CharacterGender.UNUSED) set(CHARACTER_FILTER_GENDER, gender.name)
     }
+}
+
+fun CharacterFilter.toRequest(): CharacterFilterRequestInterface {
+    return CharacterFilterRequest(
+        name = name,
+        status = status.toString(),
+        species = species,
+        type = type,
+        gender = gender.toString(),
+    )
 }

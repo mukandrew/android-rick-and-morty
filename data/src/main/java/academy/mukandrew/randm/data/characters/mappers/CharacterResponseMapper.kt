@@ -1,12 +1,15 @@
 package academy.mukandrew.randm.data.characters.mappers
 
+import academy.mukandrew.randm.common.exceptions.NoContentException
 import academy.mukandrew.randm.common.utils.safeValueOf
 import academy.mukandrew.randm.data.characters.models.CharacterResponseInterface
 import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.models.CharacterGender
 import academy.mukandrew.randm.domain.characters.models.CharacterStatus
 
-fun CharacterResponseInterface.toDomainModel(): Character {
+fun CharacterResponseInterface?.toDomainModel(): Character {
+    if (this == null) throw NoContentException()
+
     return Character(
         id = id,
         name = name.orEmpty(),
@@ -18,4 +21,6 @@ fun CharacterResponseInterface.toDomainModel(): Character {
     )
 }
 
-fun List<CharacterResponseInterface>.toDomainModel(): List<Character> = map { it.toDomainModel() }
+fun List<CharacterResponseInterface>?.toDomainModel(): List<Character> {
+    return this?.map { it.toDomainModel() }.orEmpty()
+}

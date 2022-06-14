@@ -4,21 +4,22 @@ import academy.mukandrew.randm.data.pagination.models.InfoPageResponseInterface
 import academy.mukandrew.randm.data.pagination.models.PageResultResponseInterface
 import academy.mukandrew.randm.domain.pagination.models.InfoPage
 import academy.mukandrew.randm.domain.pagination.models.PageResult
+import kotlin.math.max
 
-fun InfoPageResponseInterface.toDomainModel(): InfoPage {
+fun InfoPageResponseInterface?.toDomainModel(): InfoPage {
     return InfoPage(
-        count = count ?: 0,
-        pages = pages ?: 0,
-        next = next ?: 0,
-        prev = prev ?: 0,
+        count = max(this?.count ?: 0, 0),
+        pages = max(this?.pages ?: 0, 0),
+        next = max(this?.next ?: 0, 0),
+        prev = max(this?.prev ?: 0, 0)
     )
 }
 
-fun <IN, OUT> PageResultResponseInterface<IN>.toDomainModel(
-    mapBlock: () -> List<OUT>
+fun <IN, OUT> PageResultResponseInterface<IN>?.toDomainModel(
+    mapBlock: (() -> List<OUT>)?
 ): PageResult<OUT> {
     return PageResult(
-        info = info.toDomainModel(),
-        results = mapBlock.invoke()
+        info = this?.info.toDomainModel(),
+        results = mapBlock?.invoke().orEmpty()
     )
 }

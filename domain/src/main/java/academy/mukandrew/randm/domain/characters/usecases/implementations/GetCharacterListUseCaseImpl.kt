@@ -8,7 +8,7 @@ import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.characters.usecases.abstractions.GetCharacterListUseCase
 import academy.mukandrew.randm.domain.pagination.models.PageResult
 
-class GetCharacterListUseCaseImpl(
+internal class GetCharacterListUseCaseImpl(
     private val repository: CharacterRepository
 ) : GetCharacterListUseCase() {
 

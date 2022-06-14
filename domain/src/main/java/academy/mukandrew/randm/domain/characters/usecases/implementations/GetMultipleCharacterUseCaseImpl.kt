@@ -6,7 +6,7 @@ import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.characters.usecases.abstractions.GetMultipleCharacterUseCase
 
-class GetMultipleCharacterUseCaseImpl(
+internal class GetMultipleCharacterUseCaseImpl(
     private val repository: CharacterRepository
 ) : GetMultipleCharacterUseCase() {
     override suspend fun invoke(ids: List<Int>): Answer<List<Character>> {

@@ -1,6 +1,7 @@
 package academy.mukandrew.randm.remote.characters.datasource
 
 import academy.mukandrew.randm.data.characters.datasource.CharacterDataSource
+import academy.mukandrew.randm.data.characters.models.CharacterFilterRequestInterface
 import academy.mukandrew.randm.data.characters.models.CharacterResponseInterface
 import academy.mukandrew.randm.data.pagination.models.PageResultResponseInterface
 import academy.mukandrew.randm.remote.characters.clients.CharacterClient
@@ -14,9 +15,9 @@ class CharacterRemoteDataSource(
 ) : CharacterDataSource {
     override suspend fun getCharacterList(
         page: Int,
-        filters: Map<String, String>
+        filters: CharacterFilterRequestInterface
     ): PageResultResponseInterface<CharacterResponseInterface> {
-        return client.getCharacterList(getCharactersQuery(page, filters)).toResponseModel()
+        return client.getCharacterList(filters.getCharactersQuery(page)).toResponseModel()
     }
 
     override suspend fun getCharacterById(id: Int): CharacterResponseInterface {

@@ -59,7 +59,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // modules
-    implementation project(Dependencies.Modules.presentation)
     implementation project(Dependencies.Modules.domain)
     implementation project(Dependencies.Modules.data)
     implementation project(Dependencies.Modules.remote)
@@ -80,6 +79,9 @@ dependencies {
     implementation Dependencies.Compose.material
     implementation Dependencies.Compose.tooling
     implementation Dependencies.Compose.activity
+    implementation Dependencies.Compose.viewModel
+    implementation Dependencies.Compose.foundation
+    implementation Dependencies.Compose.animation
 
     // hilt
     implementation Dependencies.Hilt.android

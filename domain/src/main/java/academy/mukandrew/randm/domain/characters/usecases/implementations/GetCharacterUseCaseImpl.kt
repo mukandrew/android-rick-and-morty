@@ -5,7 +5,7 @@ import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.characters.usecases.abstractions.GetCharacterUseCase
 
-class GetCharacterUseCaseImpl(
+internal class GetCharacterUseCaseImpl(
     private val repository: CharacterRepository
 ) : GetCharacterUseCase() {
     override suspend fun invoke(id: Int): Answer<Character> {
