@@ -7,8 +7,9 @@ import academy.mukandrew.randm.domain.characters.models.CharacterFilter
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.characters.usecases.abstractions.GetCharacterListUseCase
 import academy.mukandrew.randm.domain.pagination.models.PageResult
+import javax.inject.Inject
 
-internal class GetCharacterListUseCaseImpl(
+class GetCharacterListUseCaseImpl @Inject constructor(
     private val repository: CharacterRepository
 ) : GetCharacterListUseCase() {
 

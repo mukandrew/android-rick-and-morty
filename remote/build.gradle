@@ -1,16 +1,43 @@
 import dependencies.Dependencies
+import dependencies.Version
 
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.apollographql.apollo'
 }
 
 apply from: Dependencies.common
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+android {
+    compileSdk Version.App.compileSdk
+
+    defaultConfig {
+        minSdk Version.App.minSdk
+        targetSdk Version.App.targetSdk
+        versionCode Version.App.versionCode
+        versionName Version.App.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "BASE_URL", "\"${GRAPHQL_SERVER_ENDPOINT}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {

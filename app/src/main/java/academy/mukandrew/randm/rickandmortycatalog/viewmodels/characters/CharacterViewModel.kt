@@ -6,8 +6,11 @@ import academy.mukandrew.randm.rickandmortycatalog.viewmodels.BaseViewModel
 import academy.mukandrew.randm.rickandmortycatalog.viewmodels.models.BaseViewState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-internal class CharacterViewModel(
+@HiltViewModel
+class CharacterViewModel @Inject constructor(
     private val getCharacterListUseCase: GetCharacterListUseCase
 ) : BaseViewModel() {
     private val _listViewState = mutableStateOf<BaseViewState<List<Character>>>(

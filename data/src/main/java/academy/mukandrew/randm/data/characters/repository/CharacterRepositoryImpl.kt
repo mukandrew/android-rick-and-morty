@@ -3,6 +3,8 @@ package academy.mukandrew.randm.data.characters.repository
 import academy.mukandrew.randm.common.result.Answer
 import academy.mukandrew.randm.common.utils.answerBy
 import academy.mukandrew.randm.data.characters.datasource.CharacterDataSource
+import academy.mukandrew.randm.data.characters.di.CharacterLocalDataSourceQualifier
+import academy.mukandrew.randm.data.characters.di.CharacterRemoteDataSourceQualifier
 import academy.mukandrew.randm.data.characters.mappers.toDomainModel
 import academy.mukandrew.randm.data.characters.mappers.toRequest
 import academy.mukandrew.randm.data.pagination.mappers.toDomainModel
@@ -10,10 +12,11 @@ import academy.mukandrew.randm.domain.characters.models.Character
 import academy.mukandrew.randm.domain.characters.models.CharacterFilter
 import academy.mukandrew.randm.domain.characters.repository.CharacterRepository
 import academy.mukandrew.randm.domain.pagination.models.PageResult
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
-    private val localDataSource: CharacterDataSource,
-    private val remoteDataSource: CharacterDataSource
+class CharacterRepositoryImpl @Inject constructor(
+    @CharacterLocalDataSourceQualifier private val localDataSource: CharacterDataSource,
+    @CharacterRemoteDataSourceQualifier private val remoteDataSource: CharacterDataSource
 ) : CharacterRepository {
     override suspend fun getCharacterList(
         page: Int,

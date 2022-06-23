@@ -1,4 +1,4 @@
-package academy.mukandrew.randm.remote.characters.clients
+package academy.mukandrew.randm.remote.graphql.clients
 
 import academy.mukandrew.randm.remote.CharacterQuery
 import academy.mukandrew.randm.remote.CharactersByIdsQuery
@@ -8,4 +8,5 @@ interface CharacterClient {
     suspend fun getCharacterList(query: CharactersQuery): CharactersQuery.Data
     suspend fun getCharacter(query: CharacterQuery): CharacterQuery.Data
     suspend fun getCharactersByIds(query: CharactersByIdsQuery): CharactersByIdsQuery.Data
+    fun log()
 }

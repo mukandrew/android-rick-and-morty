@@ -1,6 +1,7 @@
 import dependencies.Dependencies
 
 apply from: Dependencies.ktlintGradle
+apply plugin: Dependencies.Plugins.Hilt
 
 dependencies {
     implementation project(Dependencies.Modules.common)
@@ -12,4 +13,8 @@ dependencies {
     testImplementation Dependencies.Test.coroutine
     testImplementation Dependencies.Test.kotest
     testImplementation Dependencies.Test.kotestProperty
+
+    // Hilt
+    implementation Dependencies.Hilt.android
+    kapt Dependencies.Hilt.androidCompiler
 }

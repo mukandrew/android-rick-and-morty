@@ -8,8 +8,9 @@ import academy.mukandrew.randm.data.characters.datasource.CharacterDataSource
 import academy.mukandrew.randm.data.characters.models.CharacterFilterRequestInterface
 import academy.mukandrew.randm.data.characters.models.CharacterResponseInterface
 import academy.mukandrew.randm.data.pagination.models.PageResultResponseInterface
+import javax.inject.Inject
 
-internal class CharacterLocalDataSource(
+internal class CharacterLocalDataSource @Inject constructor(
     private val characterDao: CharacterDao,
     private val characterSearchPageDao: CharacterSearchPageDao
 ) : CharacterDataSource {

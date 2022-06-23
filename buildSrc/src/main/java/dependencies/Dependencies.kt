@@ -11,6 +11,10 @@ object Dependencies {
     const val ktlintGradle = "../ktlint.gradle"
     const val ktlint = "com.pinterest:ktlint:${Version.App.ktlint}"
 
+    object Plugins {
+        const val Hilt = "dagger.hilt.android.plugin"
+    }
+
     object ClassPaths {
         const val gradle = "com.android.tools.build:gradle:${Version.ClassPaths.gradle}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.ClassPaths.kotlin}"
@@ -90,7 +94,7 @@ object Dependencies {
         const val android = "com.google.dagger:hilt-android:${Version.ClassPaths.hilt}"
         const val androidCompiler =
             "com.google.dagger:hilt-android-compiler:${Version.ClassPaths.hilt}"
-        const val lifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.Hilt.lifecycle}"
-        const val lifecycleCompiler = "androidx.hilt:hilt-compiler:${Version.Hilt.lifecycle}"
+        const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.Hilt.viewModel}"
+        const val viewModelCompiler = "androidx.hilt:hilt-compiler:${Version.Hilt.viewModel}"
     }
 }

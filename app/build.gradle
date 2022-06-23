@@ -5,7 +5,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 apply from: Dependencies.common
@@ -24,7 +23,6 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
-        buildConfigField "String", "BASE_URL", "\"${GRAPHQL_SERVER_ENDPOINT}\""
     }
 
     buildTypes {
@@ -84,10 +82,8 @@ dependencies {
     implementation Dependencies.Compose.animation
 
     // hilt
-    implementation Dependencies.Hilt.android
-    implementation Dependencies.Hilt.lifecycle
-    kapt Dependencies.Hilt.androidCompiler
-    kapt Dependencies.Hilt.lifecycleCompiler
+    implementation Dependencies.Hilt.viewModel
+    kapt Dependencies.Hilt.viewModelCompiler
 
     // android test
     androidTestImplementation Dependencies.Test.androidJUnit

@@ -54,6 +54,6 @@ object Version {
     }
 
     object Hilt {
-        const val lifecycle = "1.0.0-alpha01"
+        const val viewModel = "1.0.0-alpha01"
     }
 }
