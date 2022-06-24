@@ -7,11 +7,11 @@ import androidx.room.PrimaryKey
 @Entity
 internal data class CharacterSearchPageNumberEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val searchPageId: Int,
+    val searchPageId: Long,
     val pageNumber: Int,
     override val count: Int,
     override val pages: Int,
     override val next: Int,
     override val prev: Int,
-    val characterIds: List<Int>
+    val characterIds: List<Long>
 ) : InfoPageResponseInterface

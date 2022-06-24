@@ -2,9 +2,8 @@ package academy.mukandrew.randm.data.characters.repository
 
 import academy.mukandrew.randm.common.result.Answer
 import academy.mukandrew.randm.common.utils.answerBy
+import academy.mukandrew.randm.data.characters.datasource.CharacterCacheDataSource
 import academy.mukandrew.randm.data.characters.datasource.CharacterDataSource
-import academy.mukandrew.randm.data.characters.di.CharacterLocalDataSourceQualifier
-import academy.mukandrew.randm.data.characters.di.CharacterRemoteDataSourceQualifier
 import academy.mukandrew.randm.data.characters.mappers.toDomainModel
 import academy.mukandrew.randm.data.characters.mappers.toRequest
 import academy.mukandrew.randm.data.pagination.mappers.toDomainModel
@@ -15,8 +14,8 @@ import academy.mukandrew.randm.domain.pagination.models.PageResult
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
-    @CharacterLocalDataSourceQualifier private val localDataSource: CharacterDataSource,
-    @CharacterRemoteDataSourceQualifier private val remoteDataSource: CharacterDataSource
+    private val localDataSource: CharacterCacheDataSource,
+    private val remoteDataSource: CharacterDataSource
 ) : CharacterRepository {
     override suspend fun getCharacterList(
         page: Int,
@@ -27,7 +26,16 @@ class CharacterRepositoryImpl @Inject constructor(
         return answerBy(
             fromLocal = { localDataSource.getCharacterList(page, mappedFilter) },
             fromRemote = { remoteDataSource.getCharacterList(page, mappedFilter) },
-            mapper = { it.toDomainModel(it.results::toDomainModel) }
+            mapper = { it.toDomainModel(it.results::toDomainModel) },
+            createCache = { response ->
+                val charactersId = localDataSource.saveCharacter(response.results)
+                localDataSource.saveSearchPage(
+                    mappedFilter,
+                    response.info,
+                    page,
+                    charactersId
+                )
+            }
         )
     }
 
@@ -39,7 +47,7 @@ class CharacterRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getMultipleCharactersById(ids: List<Int>): Answer<List<Character>> {
+    override suspend fun getMultipleCharactersById(ids: List<Long>): Answer<List<Character>> {
         return answerBy(
             fromLocal = { localDataSource.getMultipleCharactersById(ids) },
             fromRemote = { remoteDataSource.getMultipleCharactersById(ids) },

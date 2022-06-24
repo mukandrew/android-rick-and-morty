@@ -13,10 +13,12 @@ suspend fun <T> ignoreException(block: suspend () -> T?): T? {
 suspend fun <T, O> answerBy(
     fromLocal: suspend () -> O?,
     fromRemote: suspend () -> O,
-    mapper: (O) -> T
+    mapper: (O) -> T,
+    createCache: (suspend (O) -> Unit)? = null
 ): Answer<T> {
     return try {
-        val response = ignoreException { fromLocal() } ?: fromRemote()
+        val response =
+            ignoreException { fromLocal() } ?: fromRemote().also { createCache?.invoke(it) }
         Answer.success(mapper(response))
     } catch (e: Exception) {
         Answer.failure(e)

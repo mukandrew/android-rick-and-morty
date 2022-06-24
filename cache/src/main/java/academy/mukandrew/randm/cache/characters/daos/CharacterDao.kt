@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 internal interface CharacterDao : BaseDao<CharacterEntity> {
     @Query(value = "SELECT * FROM CharacterEntity WHERE id IN (:ids)")
-    suspend fun getCharactersById(ids: List<Int>): List<CharacterEntity>
+    suspend fun getCharactersById(ids: List<Long>): List<CharacterEntity>
 
     @Query(value = "SELECT * FROM CharacterEntity WHERE id = :id")
     suspend fun getCharacterById(id: Int): List<CharacterEntity>

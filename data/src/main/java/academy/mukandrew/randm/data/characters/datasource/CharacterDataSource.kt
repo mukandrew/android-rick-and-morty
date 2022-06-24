@@ -11,5 +11,5 @@ interface CharacterDataSource {
     ): PageResultResponseInterface<CharacterResponseInterface>
 
     suspend fun getCharacterById(id: Int): CharacterResponseInterface?
-    suspend fun getMultipleCharactersById(ids: List<Int>): List<CharacterResponseInterface>
+    suspend fun getMultipleCharactersById(ids: List<Long>): List<CharacterResponseInterface>
 }

@@ -1,9 +1,12 @@
 package academy.mukandrew.randm.cache.characters.daos
 
 import academy.mukandrew.randm.cache.characters.entities.CharacterSearchPageEntity
+import academy.mukandrew.randm.cache.characters.entities.CharacterSearchPageNumberEntity
 import academy.mukandrew.randm.cache.characters.entities.CharacterSearchPageWithPageNumber
 import academy.mukandrew.randm.cache.database.BaseDao
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
@@ -42,4 +45,10 @@ internal interface CharacterSearchPageDao : BaseDao<CharacterSearchPageEntity> {
         gender: String,
         pageNumber: Int
     ): CharacterSearchPageWithPageNumber?
+
+    @Insert(
+        entity = CharacterSearchPageNumberEntity::class,
+        onConflict = OnConflictStrategy.REPLACE
+    )
+    suspend fun insertPageNumber(entity: CharacterSearchPageNumberEntity): Long
 }

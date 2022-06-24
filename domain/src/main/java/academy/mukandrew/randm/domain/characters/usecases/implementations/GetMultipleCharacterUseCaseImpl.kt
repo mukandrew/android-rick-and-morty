@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetMultipleCharacterUseCaseImpl @Inject constructor(
     private val repository: CharacterRepository
 ) : GetMultipleCharacterUseCase() {
-    override suspend fun invoke(ids: List<Int>): Answer<List<Character>> {
+    override suspend fun invoke(ids: List<Long>): Answer<List<Character>> {
         val answer = repository.getMultipleCharactersById(ids)
 
         if (answer.isSuccess && answer.getOrNull()?.isEmpty() == true) {

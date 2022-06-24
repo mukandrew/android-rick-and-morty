@@ -26,7 +26,7 @@ class CharacterRemoteDataSource @Inject constructor(
     }
 
     override suspend fun getMultipleCharactersById(
-        ids: List<Int>
+        ids: List<Long>
     ): List<CharacterResponseInterface> {
         return client.getCharactersByIds(getCharactersByIdsQuery(ids)).toResponseModel()
     }

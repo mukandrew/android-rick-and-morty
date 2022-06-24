@@ -8,12 +8,12 @@ internal class IdTypeConverter {
     }
 
     @TypeConverter
-    fun fromListId(value: List<Int>): String {
+    fun fromListId(value: List<Long>): String {
         return value.joinToString(SPLIT_PATTERN) { it.toString() }
     }
 
     @TypeConverter
-    fun toListId(value: String): List<Int> {
-        return value.split(SPLIT_PATTERN).map { it.toInt() }
+    fun toListId(value: String): List<Long> {
+        return value.split(SPLIT_PATTERN).map { it.toLong() }
     }
 }
