@@ -5,3 +5,7 @@ plugins {
 }
 
 apply from: "../common.gradle"
+
+android {
+    namespace 'academy.mukandrew.randm.domain'
+}

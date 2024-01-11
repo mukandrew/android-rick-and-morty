@@ -8,6 +8,8 @@ plugins {
 apply from: "../common.gradle"
 
 android {
+    namespace 'academy.mukandrew.randm.remote'
+
     defaultConfig {
         buildConfigField "String", "BASE_URL", "\"${GRAPHQL_SERVER_ENDPOINT}\""
     }

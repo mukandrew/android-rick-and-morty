@@ -6,6 +6,10 @@ plugins {
 
 apply from: "../common.gradle"
 
+android {
+    namespace 'academy.mukandrew.randm.data'
+}
+
 dependencies {
     implementation project(":domain")
     testImplementation "io.kotest:kotest-property:4.6.3"

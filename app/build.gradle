@@ -7,6 +7,8 @@ plugins {
 apply from: "../common.gradle"
 
 android {
+    namespace 'academy.mukandrew.randm.rickandmortycatalog'
+
     defaultConfig {
         applicationId "academy.mukandrew.android.rickandmortycatalog"
 
