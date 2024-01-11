@@ -1,12 +1,10 @@
-import dependencies.Dependencies
-
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
 }
 
-apply from: Dependencies.common
+apply from: "../common.gradle"
 
 android {
     defaultConfig {
@@ -22,12 +20,12 @@ android {
 }
 
 dependencies {
-    implementation project(Dependencies.Modules.data)
+    implementation project(":data")
 
     // Room
-    implementation Dependencies.Room.runtime
-    implementation Dependencies.Ktx.room
-    kapt Dependencies.Room.compiler
+    implementation "androidx.room:room-runtime:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
 
-    testImplementation Dependencies.Test.room
+    testImplementation "androidx.room:room-testing:2.4.2"
 }

@@ -1,5 +1,3 @@
-import dependencies.Dependencies
-
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
@@ -7,7 +5,7 @@ plugins {
     id 'com.apollographql.apollo'
 }
 
-apply from: Dependencies.common
+apply from: "../common.gradle"
 
 android {
     defaultConfig {
@@ -16,11 +14,11 @@ android {
 }
 
 dependencies {
-    implementation project(Dependencies.Modules.data)
+    implementation project(":data")
 
     // Apollo
-    implementation Dependencies.Apollo.runtime
-    implementation Dependencies.Apollo.coroutinesSupport
+    implementation "com.apollographql.apollo:apollo-runtime:2.5.9"
+    implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.9"
 }
 
 apollo {

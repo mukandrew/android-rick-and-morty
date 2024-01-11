@@ -1,15 +1,13 @@
-import dependencies.Dependencies
-
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath Dependencies.ClassPaths.gradle
-        classpath Dependencies.ClassPaths.kotlin
-        classpath Dependencies.ClassPaths.apollo
-        classpath Dependencies.ClassPaths.hilt
+        classpath "com.android.tools.build:gradle:7.2.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20"
+        classpath "com.apollographql.apollo:apollo-gradle-plugin:2.5.9"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.39.1"
     }
 }
 

@@ -1,11 +1,9 @@
-import dependencies.Dependencies
-
 configurations {
     ktlint
 }
 
 dependencies {
-    ktlint Dependencies.ktlint
+    ktlint "com.pinterest:ktlint:0.42.1"
 }
 
 def outputDir = "${project.buildDir}/reports/ktlint/"

@@ -1,11 +1,9 @@
-import dependencies.Dependencies
-
 plugins {
     id 'java-library'
     id 'kotlin'
 }
 
-apply from: Dependencies.ktlintGradle
+apply from: "../ktlint.gradle"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
