@@ -10,14 +10,8 @@ plugins {
 apply from: Dependencies.common
 
 android {
-    compileSdk Version.App.compileSdk
-
     defaultConfig {
         applicationId "academy.mukandrew.android.rickandmortycatalog"
-        minSdk Version.App.minSdk
-        targetSdk Version.App.targetSdk
-        versionCode Version.App.versionCode
-        versionName Version.App.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -40,7 +34,7 @@ android {
         useIR = true
     }
     buildFeatures {
-        compose true
+        compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion Version.Compose.general
@@ -64,7 +58,6 @@ dependencies {
 
     // android
     implementation Dependencies.Android.appcompat
-    implementation Dependencies.Android.material
 
     // ktx
     implementation Dependencies.Ktx.core
@@ -74,12 +67,18 @@ dependencies {
 
     // compose
     implementation Dependencies.Compose.ui
-    implementation Dependencies.Compose.material
+    implementation Dependencies.Compose.material3
+    implementation Dependencies.Compose.material3WindowSize
     implementation Dependencies.Compose.tooling
     implementation Dependencies.Compose.activity
     implementation Dependencies.Compose.viewModel
     implementation Dependencies.Compose.foundation
     implementation Dependencies.Compose.animation
+    implementation Dependencies.Compose.constraint
+
+    // Coil
+    implementation Dependencies.Coil.lib
+    implementation Dependencies.Coil.compose
 
     // hilt
     implementation Dependencies.Hilt.viewModel

@@ -58,12 +58,16 @@ object Dependencies {
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Version.Compose.general}"
         const val animation = "androidx.compose.animation:animation:${Version.Compose.general}"
-        const val material = "androidx.compose.material:material:${Version.Compose.general}"
+        const val material3 = "androidx.compose.material3:material3:${Version.Compose.material3}"
+        const val material3WindowSize =
+            "androidx.compose.material3:material3-window-size-class:${Version.Compose.material3}"
         const val tooling = "androidx.compose.ui:ui-tooling-preview:${Version.Compose.general}"
         const val foundation = "androidx.compose.foundation:foundation:${Version.Compose.general}"
         const val activity = "androidx.activity:activity-compose:${Version.Compose.activity}"
         const val viewModel =
             "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.Compose.viewModel}"
+        const val constraint =
+            "androidx.constraintlayout:constraintlayout-compose:${Version.Compose.constraint}"
     }
 
     object Android {
@@ -96,5 +100,10 @@ object Dependencies {
             "com.google.dagger:hilt-android-compiler:${Version.ClassPaths.hilt}"
         const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.Hilt.viewModel}"
         const val viewModelCompiler = "androidx.hilt:hilt-compiler:${Version.Hilt.viewModel}"
+    }
+
+    object Coil {
+        const val lib = "io.coil-kt:coil:${Version.Coil.general}"
+        const val compose = "io.coil-kt:coil-compose:${Version.Coil.general}"
     }
 }

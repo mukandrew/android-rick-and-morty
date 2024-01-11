@@ -3,7 +3,6 @@ import dependencies.Dependencies
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
     dependencies {

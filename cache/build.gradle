@@ -1,5 +1,4 @@
 import dependencies.Dependencies
-import dependencies.Version
 
 plugins {
     id 'com.android.library'
@@ -10,17 +9,7 @@ plugins {
 apply from: Dependencies.common
 
 android {
-    compileSdk Version.App.compileSdk
-
     defaultConfig {
-        minSdk Version.App.minSdk
-        targetSdk Version.App.targetSdk
-        versionCode Version.App.versionCode
-        versionName Version.App.versionName
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [
@@ -29,20 +18,6 @@ android {
                         "room.expandProjection":"true"]
             }
         }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 

@@ -3,9 +3,9 @@ package dependencies
 object Version {
     // android Configuration
     object App {
-        const val compileSdk = 31
+        const val compileSdk = 32
         const val minSdk = 23
-        const val targetSdk = 31
+        const val targetSdk = 32
         const val versionCode = 1
         const val versionName = "1.0.0"
         const val ktlint = "0.42.1"
@@ -13,8 +13,8 @@ object Version {
 
     object ClassPaths {
         const val hilt = "2.39.1"
-        const val gradle = "7.0.2"
-        const val kotlin = "1.6.10"
+        const val gradle = "7.2.1"
+        const val kotlin = "1.6.20"
         const val apollo = "2.5.9"
     }
 
@@ -32,9 +32,11 @@ object Version {
     }
 
     object Compose {
-        const val general = "1.1.1"
+        const val general = "1.2.0-alpha08"
         const val activity = "1.3.1"
         const val viewModel = "2.4.1"
+        const val constraint = "1.0.0-alpha08"
+        const val material3 = "1.0.0-alpha13"
     }
 
     object Android {
@@ -55,5 +57,9 @@ object Version {
 
     object Hilt {
         const val viewModel = "1.0.0-alpha01"
+    }
+
+    object Coil {
+        const val general = "2.1.0"
     }
 }
