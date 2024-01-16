@@ -5,7 +5,6 @@ import academy.mukandrew.randm.remote.CharactersByIdsQuery
 import academy.mukandrew.randm.remote.CharactersQuery
 import academy.mukandrew.randm.remote.common.awaitDataOrException
 import academy.mukandrew.randm.remote.graphql.ApolloService
-import android.util.Log
 import javax.inject.Inject
 
 class CharacterClientImpl @Inject constructor(
@@ -27,9 +26,5 @@ class CharacterClientImpl @Inject constructor(
         query: CharactersByIdsQuery
     ): CharactersByIdsQuery.Data {
         return service.getClient().query(query).awaitDataOrException()
-    }
-
-    override fun log() {
-        Log.d("__CharacterClient", "Hello From CharacterClient")
     }
 }

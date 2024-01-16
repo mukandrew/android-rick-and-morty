@@ -10,9 +10,7 @@ enum class CharacterGender {
         }
     }
 
-    fun firstCaseName() = toString().lowercase().replaceFirstChar { it.uppercase() }
-
     companion object {
-        fun asList() = CharacterStatus.values().filter { it != CharacterStatus.UNUSED }
+        fun asList() = CharacterStatus.entries.filter { it != CharacterStatus.UNUSED }
     }
 }

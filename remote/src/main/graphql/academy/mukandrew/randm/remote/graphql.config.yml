@@ -1,0 +1,4 @@
+schema:
+  - schema.json
+  - 'https://rickandmortyapi.com/graphql'
+documents: '**/*.graphql'

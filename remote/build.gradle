@@ -1,28 +1,25 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'com.apollographql.apollo'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.apollo
 }
 
 apply from: "../common.gradle"
 
 android {
     namespace 'academy.mukandrew.randm.remote'
-
-    defaultConfig {
-        buildConfigField "String", "BASE_URL", "\"${GRAPHQL_SERVER_ENDPOINT}\""
-    }
 }
 
 dependencies {
     implementation project(":data")
+    implementation project(":common")
 
     // Apollo
-    implementation "com.apollographql.apollo:apollo-runtime:2.5.9"
-    implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.9"
+    implementation libs.apollo.runtime
 }
 
 apollo {
-    generateKotlinModels.set(true)
+    service("service") {
+        packageName.set("academy.mukandrew.randm.remote")
+    }
 }

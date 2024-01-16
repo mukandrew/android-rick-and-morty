@@ -1,7 +1,7 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.ksp
 }
 
 apply from: "../common.gradle"
@@ -10,24 +10,22 @@ android {
     namespace 'academy.mukandrew.randm.cache'
 
     defaultConfig {
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
         }
     }
 }
 
 dependencies {
     implementation project(":data")
+    implementation project(":common")
 
     // Room
-    implementation "androidx.room:room-runtime:2.4.2"
-    implementation "androidx.room:room-ktx:2.4.2"
-    kapt "androidx.room:room-compiler:2.4.2"
+    implementation libs.androidx.room.ktx
+    implementation libs.androidx.room.runtime
+    ksp libs.androidx.room.compiler
 
-    testImplementation "androidx.room:room-testing:2.4.2"
+    testImplementation libs.androidx.room.testing
 }

@@ -3,19 +3,19 @@ configurations {
 }
 
 dependencies {
-    ktlint "com.pinterest:ktlint:0.42.1"
+    ktlint libs.ktlint
 }
 
 def outputDir = "${project.buildDir}/reports/ktlint/"
 def inputFiles = project.fileTree(dir: "src", include: "**/*.kt")
 def outputFile = "${outputDir}ktlint-checkstyle-report.xml"
 
-task ktlintVerification(type: JavaExec, group: "verification") {
+tasks.register('ktlintVerification', JavaExec) {
     inputs.files(inputFiles)
     outputs.dir(outputDir)
 
     description = "Check Kotlin code style"
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass = "com.pinterest.ktlint.Main"
     args "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${outputFile}"
 }

@@ -1,27 +1,24 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:8.2.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
-        classpath "com.apollographql.apollo:apollo-gradle-plugin:2.5.9"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.39.1"
-    }
+plugins {
+    alias libs.plugins.android.application apply false
+    alias libs.plugins.android.library apply false
+    alias libs.plugins.kotlin.android apply false
+    alias libs.plugins.hilt apply false
+    alias libs.plugins.apollo apply false
+    alias libs.plugins.org.jetbrains.kotlin.jvm apply false
+    alias libs.plugins.ksp apply false
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }
 
 allprojects {
     afterEvaluate { Project project ->
-        if (project.tasks.findByName("preBuild") != null) {
-            project.tasks.findByName("preBuild").dependsOn(ktlintVerification)
+        if (project.tasks.asMap["preBuild"] != null) {
+            project.tasks.named("preBuild").dependsOn(ktlintVerification)
         }
-        if (project.tasks.findByName("compileKotlin") != null) {
-            project.tasks.findByName("compileKotlin").dependsOn(ktlintVerification)
+        if (project.tasks.asMap["compileKotlin"] != null) {
+            project.tasks.named("compileKotlin").dependsOn(ktlintVerification)
         }
     }
 }

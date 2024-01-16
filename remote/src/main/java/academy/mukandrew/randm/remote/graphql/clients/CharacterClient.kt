@@ -8,5 +8,4 @@ interface CharacterClient {
     suspend fun getCharacterList(query: CharactersQuery): CharactersQuery.Data
     suspend fun getCharacter(query: CharacterQuery): CharacterQuery.Data
     suspend fun getCharactersByIds(query: CharactersByIdsQuery): CharactersByIdsQuery.Data
-    fun log()
 }

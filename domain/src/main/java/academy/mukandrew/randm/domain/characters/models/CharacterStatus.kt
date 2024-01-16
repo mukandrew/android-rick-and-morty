@@ -13,6 +13,6 @@ enum class CharacterStatus {
     fun firstCaseName() = toString().lowercase().replaceFirstChar { it.uppercase() }
 
     companion object {
-        fun asList() = values().filter { it != UNUSED }
+        fun asList() = entries.filter { it != UNUSED }
     }
 }
